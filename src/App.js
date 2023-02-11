@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
+import Draggable from "react-draggable";
 
 function App() {
+  const onDrag = (event, ui) => {
+    // console.log(event);
+    console.log(`(${ui.x},${ui.y})`);
+    // this.setState({
+    //   deltaPosition: {
+    //     x: x + ui.deltaX,
+    //     y: y + ui.deltaY,
+    //   },
+    // });
+  };
+
+
+  const onStart = () => {
+    console.log(`START`)
+  };
+  const onStop = () => {
+    console.log(`STOP`)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Draggable onDrag={onDrag} onStart={onStart} onStop={onStop}>
+        <div className="box">Progummy</div>
+      </Draggable>
     </div>
   );
 }
